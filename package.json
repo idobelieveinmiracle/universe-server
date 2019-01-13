@@ -1,0 +1,24 @@
+{
+  "name": "universe-server",
+  "version": "1.0.0",
+  "description": "sicial-network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idobelieveinmiracle/universe-server.git"
+  },
+  "author": "QH",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.3"
+  },
+  "bugs": {
+    "url": "https://github.com/idobelieveinmiracle/universe-server/issues"
+  },
+  "homepage": "https://github.com/idobelieveinmiracle/universe-server#readme"
+}
