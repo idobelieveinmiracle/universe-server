@@ -9,6 +9,10 @@ const CommentSchema = new Schema({
   content: {
     type: String,
     required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
 
@@ -22,12 +26,16 @@ const PostSchema = new Schema({
     required: true
   },
   likes: {
-    type: String,
+    type: [String],
     default: []
   },
   comments: {
     type: [CommentSchema],
     default: []
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
 

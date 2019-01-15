@@ -15,7 +15,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mongoose": "^5.4.3"
+    "mongoose": "^5.4.3",
+    "mongoose-unique-array": "^0.3.0"
   },
   "bugs": {
     "url": "https://github.com/idobelieveinmiracle/universe-server/issues"
