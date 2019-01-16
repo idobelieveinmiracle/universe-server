@@ -14,7 +14,7 @@ router.get('/', function(req, res, next){
 
 // find user
 router.get('/find/:keyword', function(req, res, next){
-  console.log(req.params.keyword);
+  // console.log(req.params.keyword);
   User.find({
     username: {
       $regex: req.params.keyword,
@@ -25,6 +25,19 @@ router.get('/find/:keyword', function(req, res, next){
       user.password = "";
       return user;
     })))
+    .catch(next);
+});
+
+// valid
+router.get('/valid/:username', (req, res, next) => {
+  console.log(req.params.username);
+  User.findOne({
+    username: req.params.username
+  })
+    .then(user => {
+      if (user) res.send(false);
+      else res.send(true);
+    })
     .catch(next);
 });
 
@@ -41,6 +54,7 @@ router.get('/:username', function(req, res, next){
 // login handling
 router.post('/login', function(req, res, next){
   const {username, password} = req.body;
+  console.log(req.body);
   User.findOne({username, password})
     .then(user => res.send(user))
     .catch(next);

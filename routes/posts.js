@@ -4,7 +4,8 @@ const router = express.Router();
 const Post = require('../models/Post');
 const User = require('../models/User');
 
-router.get('/', (req, res, next) => {
+router.post('/all', (req, res, next) => {
+  console.log(req.body);
   const { username, password } = req.body;
 
   User.findOne({username, password})
@@ -26,6 +27,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+  // console.log(req.body);
   const { username, password } = req.body.user;
   const post = req.body.post;
 
@@ -74,9 +76,15 @@ router.delete('/:id', (req, res, next) => {
       if (!user) return res.send();
 
       if (user.postsId.find(postId => id == postId)){
-        Post.findByIdAndDelete(id)
-          .then(post => res.send(post))
-          .catch(next);
+        user.postsId = user.postsId.filter(postId => postId != id);
+        user.save(err => {
+          if (err) return next(err);
+          else {
+            Post.findByIdAndDelete(id)
+              .then(post => res.send(post))
+              .catch(next);
+          }
+        });
       } else res.send();
     }).catch(next);
 });
